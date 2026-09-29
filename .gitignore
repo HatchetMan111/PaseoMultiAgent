@@ -1,0 +1,5 @@
+.env
+*.log
+workspace/
+paseo-home/
+__pycache__/

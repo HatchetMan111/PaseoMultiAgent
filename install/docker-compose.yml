@@ -1,0 +1,16 @@
+services:
+  paseo:
+    image: ghcr.io/getpaseo/paseo:latest
+    container_name: paseo
+    restart: unless-stopped
+    ports:
+      - "6767:6767"
+    environment:
+      PASEO_PASSWORD: "${PASEO_PASSWORD:-change-me}"
+      # PASEO_HOSTNAMES: "paseo.example.com,.lan"
+    volumes:
+      - paseo-home:/home/paseo
+      - ./workspace:/workspace
+
+volumes:
+  paseo-home:

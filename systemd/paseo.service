@@ -1,0 +1,17 @@
+[Unit]
+Description=Paseo Control Plane for Coding Agents (Docker Compose)
+Documentation=https://paseo.sh/docs/docker
+After=network-online.target docker.service
+Wants=network-online.target
+Requires=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+WorkingDirectory=/opt/paseo
+ExecStart=/usr/bin/docker compose up -d --remove-orphans
+ExecStop=/usr/bin/docker compose down
+Restart=no
+
+[Install]
+WantedBy=multi-user.target
